@@ -7,11 +7,26 @@
 <meta name="description" content="">
 <script src="js/jquery-1.11.2.min.js"></script>
 <script>
-  $(function(){
-    $('button').click(function(){
-      alert('ボタンをクリック');
-    });
-  });
+
+// snow
+$(function(){
+	$('body').append('<div id="snow" />');
+	$('button').click(function(){
+		for(var i = 0; i < 10; i++){
+			$('<p />')
+				.appendTo('#snow')
+				.css({left: Math.round(Math.random() * 1000) + 'px', top: '-10px'})
+				.delay(100 * i)
+				.animate({top: 400 + Math.round(Math.random() * 40) + 'px'}, {duration: 5000, complete: function(){
+					$(this).animate({width: '1px', height: '1px'}, {duration: 1000 * 20, queue: false}).fadeOut(1000 * 20, function(){
+						$(this).remove();
+					});
+				}})
+			;
+		}
+	})
+});
+
 </script>
 </head>
 <body>
@@ -20,7 +35,9 @@
   margin:0;
   padding: 0;
   box-sizing: border-box;
+    height:100%;
 }
+body {  height:100%; background: -webkit-gradient(linear, left top, left bottom, from(#021b89), to(#034aeb));}
 .box{
   position:absolute;
   top:50%;
@@ -28,8 +45,6 @@
   transform: translate(-50%, -50%);
   width: 500px;
   height: 500px;
-  background-color: #d10000;
-  border:4px solid #333;
 }
 p{
   font-size: 50px;
@@ -37,10 +52,13 @@ p{
   text-align: center;
   color: #fff;
 }
+#snow {position: absolute; top: 0;}
+#snow p {position: absolute; width: 10px; height: 10px; border-radius: 5px; background-color: white;}
 </style>
-<button>クリック</button>
+<button style="background-color:#eee; width: 300px; height: 60px; background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc)); font-weight: bold; font-size: 16px;">クリック</button>
 <div class="box">
   <p>Git道場へようこそ</p>
+	<p>菊池追加したよ</p>
 </div>
 </body>
 </html>
