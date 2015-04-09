@@ -12,6 +12,17 @@
       alert('ボタンをクリック');
     });
   });
+
+// snow
+$(function(){
+	console.log('oh!');
+
+	$('body').append('<div id="snow" />').click(function(){
+		console.log('hoge');
+		$('<p />').appendTo('#snow').css({left: Math.round(Math.random() * 1000) + 'px'}).animate({top: '400px'}, {duration: 5000});
+	})
+});
+
 </script>
 </head>
 <body>
@@ -38,6 +49,8 @@ p{
   text-align: center;
   color: #fff;
 }
+#snow {position: relative;}
+#snow p {position: absolute; width: 10px; height: 10px; background-color: lime;}
 </style>
 <button style="background-color:#eee; width: 300px; height: 60px; background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc)); font-weight: bold; font-size: 16px;">クリック</button>
 <div class="box">
