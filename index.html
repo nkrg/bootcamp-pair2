@@ -17,7 +17,7 @@ $(function(){
 				.appendTo('#snow')
 				.css({left: Math.round(Math.random() * 1000) + 'px', top: '-10px'})
 				.delay(100 * i)
-				.animate({top: '400px'}, {duration: 5000, complete: function(){
+				.animate({top: 400 + Math.round(Math.random() * 40) + 'px'}, {duration: 5000, complete: function(){
 					$(this).animate({width: '1px', height: '1px'}, {duration: 1000 * 20, queue: false}).fadeOut(1000 * 20, function(){
 						$(this).remove();
 					});
