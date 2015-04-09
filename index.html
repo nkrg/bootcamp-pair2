@@ -12,14 +12,18 @@
 $(function(){
 	$('body').append('<div id="snow" />');
 	$('button').click(function(){
-		$('<p />')
-			.appendTo('#snow')
-			.css({left: Math.round(Math.random() * 1000) + 'px'})
-			.animate({top: '400px'}, {duration: 5000, complete: function(){
-				$(this).fadeOut(1000 * 30, function(){
-					$(this).remove();
-				});
-			}});
+		for(var i = 0; i < 10; i++){
+			$('<p />')
+				.appendTo('#snow')
+				.css({left: Math.round(Math.random() * 1000) + 'px', top: '-10px'})
+				.delay(100 * i)
+				.animate({top: '400px'}, {duration: 5000, complete: function(){
+					$(this).fadeOut(1000 * 30, function(){
+						$(this).remove();
+					});
+				}})
+			;
+		}
 	})
 });
 
